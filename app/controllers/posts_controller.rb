@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   #skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @post = Post.all.order("created_at DESC")
+    @posts = Post.all.order("created_at DESC")
   end
 
   def new
