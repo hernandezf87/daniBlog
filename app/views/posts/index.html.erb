@@ -1,2 +1,102 @@
-<h1>Compass Herbs</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="”https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js”"></script>
+    <title></title>
+  </head>
+  <body id="indexbody">
+    <section id="sectionindex">
+      <div class="content1">
+        <h1>Compass Herbs <br>
+           A guide to your health</h1>
+        <p>If one is fortunate enough, they have a passion.
+           Mine happens to be holistic health.
+          I enjoy guiding others on their journey to wellness.
+         I specialize in herbal medicine and nutrition,
+           which I feel are a necessary combination to keep the body in balance. <br>
+           I am a graduate of the Foundations in Western Herbalism course at <br>
+        Herbal Wisdom Institute.</p>
+      </div>
+    </section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Compass Herbs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav" align="center">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Disclaimer
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#"> I am an herbalist not a physician. <br>
+                This information has not been evaluated by the Food and Drug Administration <br>
+                and is not intended to treat, diagnose, or cure disease. <br>
+                Please consult your health care provider prior to using herbs and supplements <br>
+                 if you are pregnant, nursing, or being treated for a health condition. <br>
+                 Certain herbs will interact with medications. <br>
+                  This information is for general information purpose only.</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Robyn's Blog
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Coming Soon</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contact
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a href = "mailto: compassherbs@gmail.com"> Via Email</a>
+          <a class="dropdown-item">Phone 928-420-5722</a>
+        </div>
+      </li>
+      <% if user_signed_in?  %>
+      <li class="nav-item">
+        <a class="nav-link" <%= link_to "Create Post", new_post_path %> </a>
+      </li>
+      <% end %>
+    <li class="nav-item">
+      <a class="nav-link" <%= link_to "Sign In", new_user_session_path %> </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </a>
+    </li>
+    </ul>
+  </div>
+</nav>
+
+    <% @posts.each do |post| %>
+  <div class="card text-center">
+   <div class="card-header">
+
+  </div>
+  <div class="card-body">
+    <h5 class="card-title" id="daniscardtitle">  <%= link_to post.title, post_path(post) %></h5>
+    <p class="card-text"><%= truncate(post.description) %></p>
+  </div>
+  <div class="card-footer text-muted">
+    <%= time_ago_in_words(post.created_at) %>
+    ago, last updated:
+    <%= time_ago_in_words(post.updated_at) %>
+    ago
+    <br>
+  </div>
+  <% if user_signed_in?  %>
+          <div class="post-actions">
+            <%= link_to "Edit this post", edit_post_path(post), class: "btn btn-primary btn-sm"%>
+            <%= link_to "delete", post_path(post), method: :delete, data: {confirm: "Are you sure you would like to delete this post?"}, class: "btn btn-danger btn-sm" %>
+          </div>
+  <% end %>
+      </div>
+      <% end %>
+    </body>
+  </html>

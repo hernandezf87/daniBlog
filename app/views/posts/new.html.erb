@@ -1,0 +1,62 @@
+<% if @post.errors.any? %>
+    <h4 align="center">The following errors prevented this post from being created</h4>
+    <% @post.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    <% end %>
+<h4 class="title" align="center">New Post</h4>
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_for @post do |f| %>
+    <div class="form-group">
+      <div class="control-label col-md-6">
+        <%= f.label :Title %>
+      </div>
+      <div class="col-sm-12">
+        <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+      </div>
+    </div>
+    <br><br>
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <%= f.label :description %>
+      </div>
+      <div class="col-sm-12">
+        <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "body of blog", autofocus: true %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true %>
+    </div>
+    <br><br><br><br><br>
+    <div class="form-group">
+      <div class="control-label col-sm-6">
+        <%= f.label :description %>
+      </div>
+      <div class="col-sm-12">
+        <%= f.text_area :descriptions, rows: 10, class: "form-control", placeholder: "body of blog", autofocus: true %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true %>
+    </div>
+    <br><br><br><br><br><br><br>
+    <div class="form-group">
+      <div class="control-label col-sm-6">
+        <%= f.label :description %>
+      </div>
+      <div class="col-sm-12">
+        <%= f.text_area :descriptionstwo, rows: 10, class: "form-control", placeholder: "body of blog", autofocus: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <br>
+      <br><br><br><br><br>
+      <div class="col-sm-offset-6 col-sm-2">
+        <%= f.submit class: "btn btn-primary btn-md" %>
+      </div>
+    </div>
+  <% end %>
+</div>

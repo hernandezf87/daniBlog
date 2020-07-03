@@ -1,0 +1,157 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="”https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js”"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Compass Herbs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav" align="center">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Disclaimer
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#"> I am an herbalist not a physician. <br>
+                This information has not been evaluated by the Food and Drug Administration <br>
+                and is not intended to treat, diagnose, or cure disease. <br>
+                Please consult your health care provider prior to using herbs and supplements <br>
+                 if you are pregnant, nursing, or being treated for a health condition. <br>
+                 Certain herbs will interact with medications. <br>
+                  This information is for general information purpose only.</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Robyn's Blog
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Coming Soon</a>
+        </div>
+        <li class="nav-item">
+        <a class="nav-link" <%= link_to 'Index', root_path %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" <%= link_to "Sign In", new_user_session_path %> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <!--<h1 align="left">/h1>-->
+      <div class="container" id="maincontainer" width="1000" height="300">
+        <!--<h1 id="headtitle">Compass Herbs</h1>-->
+        <%= image_tag "compassHerbsLogo.jpg",:width =>375, :height => 375 %>
+        <!--<img src="compassHerbsLogo.jpg" alt="" style="width:200px"> -->
+        <div class="topright">
+          A guide to your health
+        </div>
+      </div>
+      <br>
+    <section>
+      <div class="content" id="firstcontainer">
+        <p id="posttitle">
+          <%= @post.title %>
+        </p>
+        <br>
+        <br>
+        <br>
+        <!-- <h5>Description: </h5> -->
+        <p id="firstpostdescription">
+          <%= @post.description %>
+        </p>
+        <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320">
+          <path fill="#F0EAD6"
+          fill-opacity="1" d="M0,224L80,234.7C160,245,320,267,480,245.3C640,224,800,160,960,138.7C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+        </svg>
+      </div>
+    </section>
+    <div class="container" id="secondcontainer">
+      <!-- <h5>Our photos</h5> -->
+      <section id="firstphotos" align="right">
+        <% (0...@post.images.count).each do |image| %>
+          <%= image_tag(@post.thumbnail(image))%>
+        <% end %>
+      </div>
+      <br>
+      <section>
+        <div class="content" id="thirdcontainer">
+          <!-- <h5>Description: </h5> -->
+          <%= @post.descriptions %>
+          <svg class="wave2" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320">
+            <path
+              fill="rgba(90, 135, 95, 0.6)"
+              fill-opacity="1"
+              d="M0,32L48,37.3C96,43,192,53,288,80C384,107,480,149,576,181.3C672,213,768,235,864,224C960,213,1056,171,1152,176C1248,181,1344,235,1392,261.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+          </svg>
+        </div>
+      </section>
+      <br>
+      <div class="container" id="fourthcontainer">
+        <!-- <h5>Our photos</h5> -->
+        <% (0...@post.images.count).each do |image| %>
+          <%= image_tag(@post.thumbnail(image))%>
+        <% end %>
+      </div>
+      <br>
+      <section>
+        <div class="content" id="secondcontainer">
+          <!-- <h5>About our photos</h5> -->
+          <%= @post.descriptionstwo %>
+          <svg class="wave3" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320">
+            <path fill="rgb(138, 83, 26)" fill-opacity="1" d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,101.3C1120,75,1280,53,1360,42.7L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+          </svg>
+        </div>
+        <br>
+        <br>
+      </section>
+      <!--footer section -->
+      <footer class="mainfooter" role="contentinfo">
+        <div class="container">
+          <div class="col-md-3 col-md-12">
+            <div class="row">
+              <div class="col-md-12 copy" align="center">
+                <a href = "mailto: compassherbs@gmail.com">Free 15 Minute Consultation</a>
+              </div>
+              <div class="col-md-12 copy">
+                <p align="center">&copy; Copyright 2020 - Frank H. All rights reserved.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">To Top</button>
+
+      <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+          scrollFunction()
+        };
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+      </script>
+    </body>
+  </html>
